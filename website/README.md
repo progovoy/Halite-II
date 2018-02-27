@@ -4,6 +4,7 @@
 
 Assuming you have RubyGems and NPM installed:
 
+	$ sudo apt-get install gcc ruby ruby-dev libxml2 libxml2-dev  libxslt1-dev
     $ cd website/
     $ sudo gem install bundler
     $ bundle install --path=vendor/bundle
@@ -28,3 +29,4 @@ Currently, there is no automation for building the offline visualizer.
     $ python3 make_starter_kits.py path/to/folder/with/compiled/halite/environments
     $ npm run build
     $ bundle exec jekyll build
+
