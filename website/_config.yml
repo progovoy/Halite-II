@@ -29,6 +29,8 @@ api_server_url: "https://api.halite.io/v1/api"
 login_server_url: "https://api.halite.io/v1/login"
 logout_server_url: "https://api.halite.io/v1/logout/"
 
+host: 127.0.0.1
+
 breadcrumbs:
   root:
     hide: true  # show breadcrumbs on root/home page
