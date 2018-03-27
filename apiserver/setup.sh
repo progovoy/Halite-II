@@ -14,15 +14,19 @@ chmod +x ./cloud_sql_proxy
 # Get the spec for the DB instance to pass to Cloud SQL Proxy
 DB_INSTANCE="$(python -m apiserver.scripts.print_db_proxy_instance)"
 
+echo "Running sqlproxy with DB_INSTANCE: ${DB_INSTANCE}"
 screen -S sqlproxy -d -m /bin/bash -c \
     "./cloud_sql_proxy -instances=${DB_INSTANCE}=tcp:3307"
 
+echo "Running api server"
 screen -S api -d -m /bin/bash -c \
     "PYTHONPATH=$(pwd) FLASK_APP=apiserver.server flask run --with-threads -h 0.0.0.0 -p 5000"
 
+echo "Running coordinator"
 screen -S coordinator_internal -d -m /bin/bash -c \
     "PYTHONPATH=$(pwd) FLASK_APP=apiserver.coordinator_server flask run --with-threads -h 0.0.0.0 -p 5001"
 
+echo "Running badge deamon"
 screen -S badge_daemon -d -m /bin/bash -c \
     "PYTHONPATH=$(pwd) python3 -m apiserver.scripts.badge_daemon.py"
 

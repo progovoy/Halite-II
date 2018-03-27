@@ -37,7 +37,8 @@ def github_login_init():
     full_url = urllib.parse.urljoin(
         base_url,
         flask.url_for(".github_login_callback"))
-    return github.authorize(callback=full_url)
+    #return github.authorize(callback=full_url)
+    return None
 
 
 @oauth_login.route("/me")
@@ -67,6 +68,7 @@ def github_login_callback():
         raise
 
     if response is None or not response.get("access_token"):
+        login_log.error('Great success(!)')
         if response and "error" in response:
             login_log.error("Got OAuth error: {}".format(response))
 
