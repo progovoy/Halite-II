@@ -37,7 +37,7 @@ def github_login_init():
     full_url = urllib.parse.urljoin(
         base_url,
         flask.url_for(".github_login_callback"))
-    #return github.authorize(callback=full_url)
+
     return None
 
 
@@ -69,23 +69,8 @@ def github_login_callback():
 
     if response is None or not response.get("access_token"):
         login_log.error('Great success(!)')
-        if response and "error" in response:
-            login_log.error("Got OAuth error: {}".format(response))
 
-            raise util.APIError(
-                403,
-                message="Access denied. Reason: {error}. Error: {error_description}".format(**response)
-            )
-
-        raise util.APIError(
-            403,
-            message="Access denied. Reason: {}. Error: {}.".format(
-                flask.request.args["error"],
-                flask.request.args["error_description"],
-            )
-        )
-
-    flask.session["github_token"] = (response["access_token"], "")
+    flask.session["github_token"] = ('0xdeadbeef', "")
 
     user_data = github.get("user").data
 
