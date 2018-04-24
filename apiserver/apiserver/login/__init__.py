@@ -3,6 +3,7 @@ import traceback
 import urllib.parse
 
 import flask
+from flask import redirect
 import sqlalchemy
 from flask_oauthlib.client import OAuth, OAuthException
 
@@ -38,7 +39,7 @@ def github_login_init():
         base_url,
         flask.url_for(".github_login_callback"))
 
-    return None
+    return redirect(full_url)
 
 
 @oauth_login.route("/me")
@@ -61,28 +62,19 @@ def logout():
 
 @oauth_login.route("/response/github")
 def github_login_callback():
-    try:
-        response = github.authorized_response()
-    except OAuthException:
-        login_log.error(traceback.format_exc())
-        raise
+    response = None
 
-    if response is None or not response.get("access_token"):
+    if response is None:
         login_log.error('Great success(!)')
 
     flask.session["github_token"] = ('0xdeadbeef', "")
 
-    user_data = github.get("user").data
+    user_data = {'login': 'yanir', 'id': 1}
 
     username = user_data["login"]
     github_user_id = user_data["id"]
-    emails = github.get("user/emails").data
+    email = 'yanirj@final.co.il'
 
-    email = emails[0]["email"]
-    for record in emails:
-        if record["primary"]:
-            email = record["email"]
-            break
     with model.engine.connect() as conn:
         user = conn.execute(sqlalchemy.sql.select([
             model.users.c.id,

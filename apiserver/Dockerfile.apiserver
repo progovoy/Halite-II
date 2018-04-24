@@ -19,5 +19,10 @@ RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | \
     bash && export NVM_DIR="/root/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 7.10.1
 
-WORKDIR /halite2/website
-CMD ./install.sh && ./runme.sh
+RUN apt-get install -y software-properties-common python-software-properties && \
+    add-apt-repository ppa:jonathonf/python-3.6 && \
+    apt-get update && \
+    apt-get install -y virtualenv python3.6 libpython3.6-dev cmake mysql-client-core-5.7 libmysqlclient-dev screen
+
+WORKDIR /home/ubuntu/Halite-II/apiserver
+CMD ./setup.sh

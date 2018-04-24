@@ -1,9 +1,9 @@
 from passlib.context import CryptContext
 
 # General coordinator settings
-COMPETITION_OPEN = False
+COMPETITION_OPEN = True
 # Original PHP: "compState", "finalsPairing"
-COMPETITION_FINALS_PAIRING = False
+COMPETITION_FINALS_PAIRING = True
 # Final open game id, set this to the id of last game played in the open stage
 LAST_OPEN_GAME = None
 # Rank cutoff schedule during finals
@@ -35,7 +35,7 @@ MAX_BOT_UPLOAD_SIZE = 20 * 1024 * 1024
 # Needs to match corresponding value in worker configuration
 MAX_COMPILED_BOT_UPLOAD_SIZE = 100 * 1024 * 1024
 # Secret key for Flask session cookies
-FLASK_SECRET_KEY = ""
+FLASK_SECRET_KEY = "1"
 # Where to look for API keys
 API_KEY_HEADER = "X-Api-Key"
 # What session cookie to use
@@ -67,12 +67,12 @@ DATABASE_INSTANCE_NAME = ""
 DATABASE_URL = "mysql://root:@127.0.0.1:3306/halite"
 
 # OAuth
-OAUTH_GITHUB_CONSUMER_KEY = ""
-OAUTH_GITHUB_CONSUMER_SECRET = ""
+OAUTH_GITHUB_CONSUMER_KEY = "1"
+OAUTH_GITHUB_CONSUMER_SECRET = "1"
 
 # CORS setup
-SITE_URL = ""
-API_URL = ""
+SITE_URL = "http://18.197.15.66:4000"
+API_URL = "http://18.197.15.66:5000"
 CORS_ORIGINS = [SITE_URL]
 
 # API Key authentication
