@@ -4,7 +4,7 @@
 
 Assuming you have RubyGems and NPM installed:
 
-	$ sudo apt-get install gcc ruby ruby-dev libxml2 libxml2-dev  libxslt1-dev
+    $ sudo apt-get install build-essential ruby ruby-dev libxml2 libxml2-dev  libxslt1-dev zlib1g-dev
     $ cd website/
     $ sudo gem install bundler
     $ bundle install --path=vendor/bundle
