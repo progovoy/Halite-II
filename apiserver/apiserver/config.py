@@ -3,9 +3,9 @@ from passlib.context import CryptContext
 # General coordinator settings
 COMPETITION_OPEN = True
 # Original PHP: "compState", "finalsPairing"
-COMPETITION_FINALS_PAIRING = True
+COMPETITION_FINALS_PAIRING = False
 # Final open game id, set this to the id of last game played in the open stage
-LAST_OPEN_GAME = None
+LAST_OPEN_GAME = 1
 # Rank cutoff schedule during finals
 # In each entry the first value is number of games to start the cutoff and
 # second value is the rank cutoff to use.

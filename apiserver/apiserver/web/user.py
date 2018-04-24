@@ -135,13 +135,7 @@ def send_confirmation_email(recipient):
     :param notify.Recipient recipient:
     """
 
-    notify.send_templated_notification(
-        recipient,
-        config.CONFIRMATION_TEMPLATE,
-        {},
-        config.GOODNEWS_ACCOMPLISHMENTS,
-        config.C_REGISTRATION_CONFIRMATION
-    )
+    return
 
 
 def guess_affiliation(email):

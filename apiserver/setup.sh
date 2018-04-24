@@ -24,9 +24,9 @@ pip install -r requirements.txt
 #screen -S api -d -m /bin/bash -c \
 #    "PYTHONPATH=$(pwd) LC_ALL=C.UTF-8 LANG=C.UTF-8 FLASK_DEBUG=1 FLASK_APP=apiserver.server flask run --with-threads -h 0.0.0.0 -p 5000"
 
-echo "Running coordinator"
-screen -S coordinator_internal -d -m /bin/bash -c \
-    "PYTHONPATH=$(pwd) FLASK_APP=apiserver.coordinator_server flask run --with-threads -h 0.0.0.0 -p 5001"
+#echo "Running coordinator"
+#screen -S coordinator_internal -d -m /bin/bash -c \
+#    "PYTHONPATH=$(pwd) FLASK_APP=apiserver.coordinator_server flask run --with-threads -h 0.0.0.0 -p 5001"
 
 echo "Running badge deamon"
 screen -S badge_daemon -d -m /bin/bash -c \
@@ -37,4 +37,4 @@ screen -S badge_daemon -d -m /bin/bash -c \
 # Disabled after finals ended
 # { crontab -l -u worker; echo "0 8 * * * $(pwd)/delete_old_games.sh"; } | crontab -u worker -
 
-PYTHONPATH=$(pwd) LC_ALL=C.UTF-8 LANG=C.UTF-8 FLASK_DEBUG=1 FLASK_APP=apiserver.server flask run --with-threads -h 0.0.0.0 -p 5000
+#PYTHONPATH=$(pwd) LC_ALL=C.UTF-8 LANG=C.UTF-8 FLASK_DEBUG=1 FLASK_APP=apiserver.server flask run --with-threads -h 0.0.0.0 -p 5000

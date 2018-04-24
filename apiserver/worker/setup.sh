@@ -24,4 +24,5 @@ if [ -f /home/worker/fix_cgroups.sh ]; then
 fi
 
 # Start the worker
+source ../venv/bin/activate
 screen -S worker -d -m /bin/bash -c "python3 worker.py"
