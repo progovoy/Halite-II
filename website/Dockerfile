@@ -9,8 +9,8 @@ RUN apt-get update && apt install -y build-essential \
     tee /etc/apt/sources.list.d/yarn.list && apt-get update && \
     apt install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs yarn && \
     git clone https://github.com/sstephenson/rbenv.git      /root/.rbenv && \
-    git clone https://github.com/sstephenson/ruby-build.git && \
-    /root/.rbenv/plugins/ruby-build  && /root/.rbenv/plugins/ruby-build/install.sh
+    git clone https://github.com/sstephenson/ruby-build.git \
+    /root/.rbenv/plugins/ruby-build && /root/.rbenv/plugins/ruby-build/install.sh
 
 ENV PATH /root/.rbenv/bin:/root/.rbenv/shims:$PATH
 RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh && \
