@@ -25,9 +25,9 @@ markdown: kramdown
 
 permalink: /blog/:year/:month/:day/:title.html
 
-api_server_url: "http://api.127.0.0.1:5000/v1/api"
-login_server_url: "http://api.127.0.0.1:5000/v1/login"
-logout_server_url: "http://api.127.0.0.1:5000/v1/logout/"
+api_server_url: "http://127.0.0.1:5000/v1/api"
+login_server_url: "http://127.0.0.1:5000/v1/login"
+logout_server_url: "http://127.0.0.1:5000/v1/logout/"
 
 host: 0.0.0.0
 
